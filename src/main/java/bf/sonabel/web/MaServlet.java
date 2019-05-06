@@ -16,8 +16,22 @@ public class MaServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse rep) throws IOException {
         //System.out.println("Bonjour de la Servlet");
+        String param = req.getParameter("nom");
+
         PrintWriter pw = rep.getWriter();
-        pw.println("Bonjour de la Servlet");
+        pw.println("<div style=\"color:red;\">Bonjour de la Servlet</div>");
+        pw.println("<p>" + param + "</p>");
+        pw.close();
+    }
+
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse rep) throws IOException {
+
+        String param = req.getParameter("monTexte");
+
+        PrintWriter pw = rep.getWriter();
+        pw.println("<div style=\"color:red;\">Bonjour de la Servlet doPost </div>");
+        pw.println("<p> le contenu envoyé est : " + param + "</p>");
         pw.close();
     }
 }
